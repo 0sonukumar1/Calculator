@@ -68,6 +68,7 @@ border-bottom-left-radius: 15%;     */
     background: #FF5733;
     transform: translateZ(25px);
     border-radius: 10%;
+       font-size: 20px;
 }
 .back {
     background: #33C7FF;
@@ -150,12 +151,21 @@ transform: rotateX(-30deg);
 margin-bottom:7vh;
 margin-top: 10vh;
 transform-style: preserve-3d;
-
+outline-color: red;border:2px solid red;
+    
     
 }
 .front19{background:rgb(45, 107, 187);#04AA6D}
-.operator{background: hotpink;
+.operator, .⌫ ,.C{background: hotpink;
     border-radius: ;
+}
+.cube14 .front{font-family:arial:;}
+.cube11 .front{
+    font-size: 65px;font-weight: 100;
+}
+.cube15 .front{
+    font-size: 40px;font-weight: 200;
+    
 }
     </style>
 </head>
@@ -168,9 +178,9 @@ transform-style: preserve-3d;
     <script>
     const contener=document.querySelector(".contener");
     const btnIcon = [
-        "Del",
+        "C",
         "%",
-        "cut",
+        "⌫",
         "/",
         7,
         8,
@@ -225,7 +235,7 @@ transform-style: preserve-3d;
       
       btnIcon.forEach((i,index)=>{   
         contener.innerHTML+=` <div class="scene">
-        <div class="cube" class="cube _${i} cube${index}">
+        <div class="cube _${i} cube${index} ${i}">
             <div class="face front front${index}">${i}</div>
             <div class="face back"> </div>
             <div class="face right"> </div>
@@ -305,10 +315,10 @@ operator_element[0].addEventListener("click",()=>{if(input.value.slice(-1) == "+
       let iv;
       contener.addEventListener("click", (e) => {
         if (
-          e.target.innerText != "Del" &&
-          e.target.innerText !== "cut" &&
+          e.target.innerText != "C" &&
+          e.target.innerText !== "⌫" &&
           e.target.innerText != "=" &&
-          e.target.getAttribute("class") != "container"
+          e.target.getAttribute("class") != "contener"
         //   && input.value.substring(input.value.length-1,input.value.length)!=="+"
         //   && input.value.substring(input.value.length-1,input.value.length)!=="-"
         //   && input.value.substring(input.value.length-1,input.value.length)!=="*"
@@ -352,7 +362,7 @@ if(input.value.slice(-1) === "%"){
         
         
             
-            if(e.target.innerText==="cut"){
+            if(e.target.innerText==="⌫"){
             
             input.value=`${input.value.substring(0,input.value.length-1)}`
         }
@@ -360,13 +370,12 @@ if(input.value.slice(-1) === "%"){
 
 
 
-        if(e.target.innerText=="Del"){input.value=""}
+        if(e.target.innerText==="C"){input.value=""}
 
 }
       });
       
       
-    //contener.innerHTML+=``
     </script>
 </body>
 </html>
